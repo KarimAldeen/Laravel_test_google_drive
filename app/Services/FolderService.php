@@ -19,18 +19,15 @@ class FolderService  extends BaseService {
     {
         $folder = Folder::whereId($id)->with("parent");
         return $folder->get();
-        return $folder;
        }
 
     public function create($data)
     {
         parent::create([
             'name' => $data['name'],
-            'parent_id' => $data['parent_id'],
-            'order' => $data['order'],
+            'parent_id' => $data['parent_id'] ?? null,
             'user_id' => $data['user_id'],
-
-            
+       
         ]);
  
    }

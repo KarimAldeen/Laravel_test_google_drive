@@ -12,7 +12,7 @@ class CustomException extends Exception
 
     public function __construct($code = 404, $message = null, Exception $previous = null)
     {
-        $ExceptionMessage = Config::get('appSetting.Exception');
+        $ExceptionMessage = config('appSetting.Exception');
 
         $this->messages = $ExceptionMessage;
         $message = $message ?? $this->getMessageForStatusCode($code);

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Base\BaseModel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Folder extends BaseModel
 {
@@ -29,6 +29,11 @@ class Folder extends BaseModel
     {
         return $this->hasMany(Attachment::class, 'folder_id');
     }
-    
+    public function scopeUser ( Builder $query , int $userId) : Builder {
+            return $query->whereUserId($userId);
+    }
+    public function scopeParent ( Builder $query , int $parentId) : Builder {
+        return $query->whereParentId($parentId);
+    }
     
 }
